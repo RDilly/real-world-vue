@@ -1,9 +1,14 @@
 import Vue from 'vue'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
 import App from './App.vue'
 import router from './router'
 import store from './store/store'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
+import BaseIcon from '@/components/BaseIcon'
+
+Vue.component('BaseIcon', BaseIcon)
+
+Vue.config.productionTip = false
 
 const requireComponent = require.context(
   './components',
@@ -20,7 +25,6 @@ requireComponent.keys().forEach(fileName => {
 
   Vue.component(componentName, componentConfig.default || componentConfig)
 })
-Vue.config.productionTip = false
 
 new Vue({
   router,
